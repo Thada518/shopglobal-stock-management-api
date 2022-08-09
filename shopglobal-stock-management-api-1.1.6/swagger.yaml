@@ -1,0 +1,792 @@
+tags:
+- name: woocommerce
+  description: Woocommerce API (WP)
+- name: webhook
+  description: Webhook Callback API
+- name: shop
+  description: Shop22 API
+
+paths:
+# # [GET] users
+#   /users:
+#     get:
+#       tags:
+#       - users
+#       summary: Find All Users
+#       responses:
+#         200:
+#           description: 'OK'
+#         500:
+#           description: 'Server Error'
+
+# # [POST] users
+#     post:
+#       tags:
+#       - users
+#       summary: Add User
+#       parameters:
+#       - name: body
+#         in: body
+#         description: user Data
+#         required: true
+#         schema:
+#           $ref: '#/definitions/users'
+#       responses:
+#         201:
+#           description: 'Created'
+#         400:
+#           description: 'Bad Request'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# # [GET] users/id
+#   /users/{id}:
+#     get:
+#       tags:
+#       - users
+#       summary: Find User By Id
+#       parameters:
+#       - name: id
+#         in: path
+#         description: User Id
+#         required: true
+#         type: integer
+#       responses:
+#         200:
+#           description: 'OK'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# # [PUT] users/id
+#     put:
+#       tags:
+#       - users
+#       summary: Update User By Id
+#       parameters:
+#       - name: id
+#         in: path
+#         description: user Id
+#         required: true
+#         type: integer
+#       - name: body
+#         in: body
+#         description: user Data
+#         required: true
+#         schema:
+#           $ref: '#/definitions/users'
+#       responses:
+#         200:
+#           description: 'OK'
+#         400:
+#           description: 'Bad Request'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# # [DELETE] users/id
+#     delete:
+#       tags:
+#       - users
+#       summary: Delete User By Id
+#       parameters:
+#       - name: id
+#         in: path
+#         description: user Id
+#         required: true
+#         type: integer
+#       responses:
+#         200:
+#           description: 'OK'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# [GET] woocommerce/get-products
+  /woocommerce/get-products:
+    get:
+      tags:
+      - woocommerce
+      summary: Get All Products
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /woocommerce/inqury-order
+  /woocommerce/get-product/{id}:
+    get:
+      tags:
+      - woocommerce
+      summary: Get Product By Id
+      parameters:
+      - name: id
+        in: path
+        description: Product Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /woocommerce/inqury-order
+  /woocommerce/get-product-by-sku/{sku}:
+    get:
+      tags:
+      - woocommerce
+      summary: Get Product By SKU
+      parameters:
+      - name: sku
+        in: path
+        description: Product SKU (Good Sale ID)
+        required: true
+        type: string
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+
+# [POST] woocommerce/create-products
+  /woocommerce/create-product:
+    post:
+      tags:
+      - woocommerce
+      summary: Create Products
+      parameters:
+      - name: body
+        in: body
+        description: Product Data
+        required: true
+        schema:
+          $ref: '#/definitions/create-product'
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [PUT] woocommerce/update-products
+  /woocommerce/update-product/{id}:
+    put:
+      tags:
+      - woocommerce
+      summary: Update Products
+      parameters:
+      - name: id
+        in: path
+        description: Product Id
+        required: true
+        type: integer
+      - name: body
+        in: body
+        description: Product Data
+        required: true
+        schema:
+          $ref: '#/definitions/update-product'
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [POST] woocommerce/create-coupon
+  /woocommerce/create-coupon:
+    post:
+      tags:
+      - woocommerce
+      summary: Create Coupons
+      parameters:
+      - name: body
+        in: body
+        description: Coupons Data
+        required: true
+        schema:
+          $ref: '#/definitions/create-coupon'
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [PUT] woocommerce/update-coupon
+  /woocommerce/update-coupon:
+    put:
+      tags:
+      - woocommerce
+      summary: Update Coupons
+      parameters:
+      - name: body
+        in: body
+        description: Coupons Data
+        required: true
+        schema:
+          $ref: '#/definitions/update-coupon'
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [DELETE] woocommerce/delete-coupon
+  /woocommerce/delete-coupon/{id}:
+    delete:
+      tags:
+      - woocommerce
+      summary: Delete Coupon By Id
+      parameters:
+      - name: id
+        in: path
+        description: Coupon Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /woocommerce/inqury-order
+  /woocommerce/inqury-order/{id}:
+    get:
+      tags:
+      - woocommerce
+      summary: Get Order Detail By Id
+      parameters:
+      - name: id
+        in: path
+        description: Order Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /woocommerce/get-customers
+  /woocommerce/get-customers:
+    get:
+      tags:
+      - woocommerce
+      summary: Get All Customers Details
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /woocommerce/get-customer
+  /woocommerce/get-customer/{id}:
+    get:
+      tags:
+      - woocommerce
+      summary: Get Customers Details By Id
+      parameters:
+      - name: id
+        in: path
+        description: Customers Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [POST] webhooks/created-order
+  /webhooks/created-order/:
+    post:
+      tags:
+      - webhook
+      summary: Created Order Webhook
+      parameters:
+      - name: body
+        in: body
+        description: Order Created Webhook Data Payload
+        required: false
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /shop/salegood-id-by-date
+  /shop/salegood-id-by-date/{date}/{weekly}:
+    get:
+      tags:
+      - shop
+      summary: Get Sale Good ID by Date
+      parameters:
+      - name: date
+        in: path
+        description: Date String (YYYYMMDD)
+        required: true
+        type: string
+      - name: weekly
+        in: path
+        description: Number of week
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+
+  /shop/salesku-id-by-salegood-id/{saleGoodId}:
+    get:
+      tags:
+      - shop
+      summary: Get Sale SKU ID by Sale Good ID
+      parameters:
+      - name: saleGoodId
+        in: path
+        description: Sale Good ID
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /shop/salegood-id-by-date
+  /shop/product-details-by-salegood-id/{saleGoodId}:
+    get:
+      tags:
+      - shop
+      summary: Get Product by Sale Good ID
+      parameters:
+      - name: saleGoodId
+        in: path
+        description: Sale Good ID
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] /shop/product-warehoure
+  /shop/product-warehoure/{saleGoodId}/{styleId}/{colorId}:
+    get:
+      tags:
+      - shop
+      summary: Get Ware Houre Location by Sale Good style and color
+      parameters:
+      - name: saleGoodId
+        in: path
+        description: Sale Good ID
+        required: true
+        type: integer
+      - name: styleId
+        in: path
+        description: Style Id
+        required: true
+        type: integer
+      - name: colorId
+        in: path
+        description: Color Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+
+  /shop/product-stock-by-salegood-id/{saleGoodId}:
+    get:
+      tags:
+      - shop
+      summary: Get Avaible Stock for Item
+      parameters:
+      - name: saleGoodId
+        in: path
+        description: Sale Good ID
+        required: true
+        type: integer
+      - name: subId
+        in: query
+        description: Item Sub Id
+        required: false
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+  /shop/promotion-by-event-id/{eventId}:
+    get:
+      tags:
+      - shop
+      summary: Get Avaible Event By ID
+      parameters:
+      - name: eventId
+        in: path
+        description: Event ID
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+  /shop/discount-price-by-salegood-id/{saleGoodId}:
+    get:
+      tags:
+      - shop
+      summary: Get Avaible Discount for Item
+      parameters:
+      - name: saleGoodId
+        in: path
+        description: Sale Good ID
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# # [GET] shop/get-products
+#   /shop/get-products:
+#     get:
+#       tags:
+#       - shop
+#       summary: Get Shop 22 All Products
+#       responses:
+#         200:
+#           description: 'OK'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# # [GET] /shop/get-customer
+#   /shop/get-product/{id}:
+#     get:
+#       tags:
+#       - shop
+#       summary: Get Shop Product By Id
+#       parameters:
+#       - name: id
+#         in: path
+#         description: Product Id
+#         required: true
+#         type: integer
+#       responses:
+#         200:
+#           description: 'OK'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# # [GET] /shop/get-coupons
+#   /shop/get-coupons:
+#     get:
+#       tags:
+#       - shop
+#       summary: Get Shop Coupons
+#       responses:
+#         200:
+#           description: 'OK'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# # [GET] /shop/get-coupon
+#   /shop/get-coupon/{id}:
+#     get:
+#       tags:
+#       - shop
+#       summary: Get Shop Coupon By Id
+#       parameters:
+#       - name: id
+#         in: path
+#         description: Coupon Id
+#         required: true
+#         type: integer
+#       responses:
+#         200:
+#           description: 'OK'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# # [POST] shop/create-order
+#   /shop/create-order:
+#     post:
+#       tags:
+#       - shop
+#       summary: Create Shop Order
+#       parameters:
+#       - name: body
+#         in: body
+#         description: Order Data
+#         required: true
+#         # schema:
+#         #   $ref: '#/definitions/create-coupon'
+#       responses:
+#         200:
+#           description: 'OK'
+#         409:
+#           description: 'Conflict'
+#         500:
+#           description: 'Server Error'
+
+# definitions
+definitions:
+  users:
+    type: object
+    required:
+        - email
+        - password
+    properties:
+      email:
+        type: string
+        description: user Email
+      password:
+        type: string
+        description: user Password
+  create-product:
+    type: object
+    required:
+        - name
+        - type
+        - price
+        - regular_price
+        - description
+        - short_description
+        - sku
+    properties:
+      name:
+        type: string
+        description: Product Name
+      type:
+        type: string
+        description: Product Type
+      price:
+        type: string
+        description: Product Price
+      regular_price:
+        type: string
+        description: Product Price (Regular)
+      description:
+        type: string
+        description: Product description
+      short_description:
+        type: string
+        description: Product description (Short)
+      sku:
+        type: string
+        description: Product SKU
+
+  update-product:
+    type: object
+    required:
+        - id
+        - name
+    properties:
+      id:
+        type: integer
+        description: Product ID
+      name:
+        type: string
+        description: Product Name
+      type:
+        type: string
+        description: Product Type
+      slug:
+        type: string
+        description: Product slug url
+      permalink:
+        type: string
+        description : Permalink
+      status:
+        type: string
+        description: Product status (post status). Options (draft, pending, private and publish). Default is publish.
+      price:
+        type: string
+        description: Product Price
+      regular_price:
+        type: string
+        description: Product Price (Regular)
+      sale_price:
+        type: string
+        description: Product sale price.
+      description:
+        type: string
+        description: Product description
+      short_description:
+        type: string
+        description: Product description (Short)
+      sku:
+        type: string
+        description: Product SKU
+      featured:
+        type: boolean
+        description: Featured product. Default is false.
+      stock_quantity:
+        type: integer
+        description: Stock quantity.
+      stock_status:
+        type: string
+        description: Controls the stock status of the product. Options instock, outofstock, onbackorder. Default is instock.
+      categories:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+        description: 	List of categories
+      images:
+        type: array
+        items:
+          type: object
+          properties:
+            src:
+              type: string
+        description: List of images.
+  create-coupon:
+    type: object
+    required:
+        - code
+        - discount_type
+        - amount
+        - individual_use
+        - exclude_sale_items
+        - minimum_amount
+        - maximum_amount
+        - usage_limit
+    properties:
+      code:
+        type: string
+        description: Coupon code.
+      discount_type:
+        type: string
+        description: Determines the type of discount that will be applied. Options(percent, fixed_cart and fixed_product.) Default is fixed_cart.
+      amount:
+        type: string
+        description: The amount of discount. Should always be numeric, even if setting a percentage.
+      individual_use:
+        type: boolean
+        description: If true, the coupon can only be used individually. Other applied coupons will be removed from the cart. Default is false.
+      exclude_sale_items:
+        type: boolean
+        description: If true, this coupon will not be applied to items that have sale prices. Default is false.
+      minimum_amount:
+        type: string
+        description: Minimum order amount that needs to be in the cart before coupon applies.
+      maximum_amount:
+        type: string
+        description: Maximum order amount allowed when using the coupon.
+      usage_limit:
+        type: integer
+        description: How many times the coupon can be used in total.
+      usage_limit_per_user:
+        type: integer
+        description: How many times the coupon can be used per customer.
+  update-coupon:
+    type: object
+    required:
+        - id
+        - code
+        - discount_type
+        - amount
+        - individual_use
+        - exclude_sale_items
+        - minimum_amount
+        - maximum_amount
+        - usage_limit
+    properties:
+      id:
+        type: integer
+        description: Unique identifier for the object
+      code:
+        type: string
+        description: Coupon code.
+      discount_type:
+        type: string
+        description: Determines the type of discount that will be applied. Options(percent, fixed_cart and fixed_product.) Default is fixed_cart.
+      amount:
+        type: string
+        description: The amount of discount. Should always be numeric, even if setting a percentage.
+      individual_use:
+        type: boolean
+        description: If true, the coupon can only be used individually. Other applied coupons will be removed from the cart. Default is false.
+      exclude_sale_items:
+        type: boolean
+        description: If true, this coupon will not be applied to items that have sale prices. Default is false.
+      minimum_amount:
+        type: string
+        description: Minimum order amount that needs to be in the cart before coupon applies.
+      maximum_amount:
+        type: string
+        description: Maximum order amount allowed when using the coupon.
+      usage_limit:
+        type: integer
+        description: How many times the coupon can be used in total.
+      usage_limit_per_user:
+        type: integer
+        description: How many times the coupon can be used per customer.
+schemes:
+ - https
+ - http
